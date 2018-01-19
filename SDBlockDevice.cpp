@@ -35,7 +35,7 @@
  *  - Figure 7-2: SPI Mode Initialization Flow
  *
  * Firstly, a low initial clock should be selected (in the range of 100-
- * 400kHZ). After initialisation has been completed, the switch to a
+ * 400kHz). After initialisation has been completed, the switch to a
  * higher clock speed can be made (e.g. 1MHz). Newer cards will support
  * higher speeds than the default _transfer_sck defined here.
  *
@@ -51,7 +51,7 @@
  * reset command (CMD0). The card will respond with a (R1) response.
  * In practice many cards initially respond with 0xff or invalid data
  * which is ignored. Data is read until a valid response is received
- * or the number of re-reads has exceeded a maximim count. If a valid
+ * or the number of re-reads has exceeded a maximum count. If a valid
  * response is not received then the CMD0 can be retried. This
  * has been found to successfully initialise cards where the SPI master
  * (on MCU) has been reset but the SDCard has not, so the first
@@ -64,7 +64,7 @@
  * ACMD41 is repeatedly issued to initialise the card, until "in idle"
  * (bit 0) of the R1 response goes to '0', indicating it is initialised.
  *
- * You should also indicate whether the host supports High Capicity cards,
+ * You should also indicate whether the host supports High Capacity cards,
  * and check whether the card is high capacity - i'll also ignore this
  *
  * SPI Protocol
@@ -587,7 +587,7 @@ int SDBlockDevice::frequency(uint64_t freq)
 // PRIVATE FUNCTIONS
 int SDBlockDevice::_freq(void)
 {
-    // Max frequency supported is 25MHZ
+    // Max frequency supported is 25MHz
     if (_transfer_sck <= 25000000) {
         _spi.frequency(_transfer_sck);
         return 0;
@@ -627,7 +627,7 @@ uint8_t SDBlockDevice::_cmd_spi(SDBlockDevice::cmdSupported cmd, uint32_t arg) {
         _spi.write(cmdPacket[i]);
     }
 
-    // The received byte immediataly following CMD12 is a stuff byte,
+    // The received byte immediately following CMD12 is a stuff byte,
     // it should be discarded before receive the response of the CMD12.
     if (CMD12_STOP_TRANSMISSION == cmd) {
         _spi.write(SPI_FILL_CHAR);

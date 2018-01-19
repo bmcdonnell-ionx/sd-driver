@@ -99,9 +99,9 @@ public:
      */
     virtual bd_size_t get_read_size() const;
 
-    /** Get the size of a programable block
+    /** Get the size of a programmable block
      *
-     *  @return         Size of a programable block in bytes
+     *  @return         Size of a programmable block in bytes
      *  @note Must be a multiple of the read size
      */
     virtual bd_size_t get_program_size() const;
@@ -191,7 +191,7 @@ private:
 
     /* SPI functions */
     Timer _spi_timer;               /**< Timer Class object used for busy wait */
-    uint32_t _init_sck;             /**< Intial SPI frequency */
+    uint32_t _init_sck;             /**< Initial SPI frequency */
     uint32_t _transfer_sck;         /**< SPI frequency during data transfer/after initialization */
     SPI _spi;                       /**< SPI Class object */
 
